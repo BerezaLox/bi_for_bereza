@@ -1,0 +1,29 @@
+n = int(input('Число матчей: '))
+team = []
+wins = {}
+losses = {}
+ni4ya = {}
+for ber in range(n):
+  res = input('Вводите результаты: ')
+  res = res.split(';')
+  if res[0] not in team:
+    team.append(res[0])
+  if res[-2] not in team:
+    team.append(res[-2])
+  if res[1] > res[-1]:
+    wins[res[0]] = wins.get(res[0] , 0) + 1
+    losses[res[-2]] = losses.get(res[-2] , 0) + 1
+  elif res[1] < res[-1]:
+    wins[res[-2]] = wins.get(res[-2] , 0) + 1
+    losses[res[0]] = losses.get(res[0] , 0) + 1
+  else:
+    ni4ya[res[0]] = ni4ya.get(res[0] , 0) + 1
+    ni4ya[res[-2]] = ni4ya.get(res[-2] , 0) + 1
+  
+for i in team: 
+  win = wins.get(i , 0)
+  loss = losses.get(i , 0)
+  nichya = ni4ya.get(i , 0)
+  games = win + loss + nichya
+  point = win * 3 + nichya
+  print(i, ':' , 'Игр: ' , games , 'Побед: ' , win , 'Ничьих: ' , nichya , 'Проигрышей: ' , loss , 'Очки: ' , point)
