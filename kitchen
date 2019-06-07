@@ -1,0 +1,25 @@
+a = input().lower().split()
+b = set(a)
+c = dict()
+w = dict()
+for i in b:
+    keys = i
+    values = a.count(i)
+    c.update({keys : values})
+    g = c.values()
+    g = list(g)
+    for j in range(0 , len(g)-1):
+        for i in range(0 , len(g)-j-1):
+            if g[i] < g[i+1]:
+                g[i] , g[i+1] = g[i+1] , g[i]
+rev = dict(zip(c.values(), c.keys()))
+z = c.keys()
+z = list(z)
+keyses = g
+valueses = rev.get(g)
+end = w.update({keyses : valueses})
+print(keyses)
+print(z)
+print(g)
+print(c)
+print(rev)
